@@ -37,3 +37,9 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+# add .env file with connection string to DB
+.env
+
+# confidential data and outputs
+data/
+output/
