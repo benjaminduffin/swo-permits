@@ -130,7 +130,9 @@ saveRDS(sero, here("data", paste0("SERO_permits_", Sys.Date(), ".rds")))
 
 #### SWO vessels from Steve ####
 # gs4_auth(email = "benjamin.duffin@noaa.gov") # run to authenticate google sheets/tidyverse communication
-swo <- read_sheet("https://docs.google.com/spreadsheets/d/19crtA31a9EWdbpWOrHA0Wkdg35-3ckB3OViZzPBuu5Y/edit?usp=sharing")
+swo <- read_sheet("https://docs.google.com/spreadsheets/d/19crtA31a9EWdbpWOrHA0Wkdg35-3ckB3OViZzPBuu5Y/edit?usp=sharing", 
+                  col_types = "c") %>%
+  as.data.frame()
 
 
 # write file
