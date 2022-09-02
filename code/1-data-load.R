@@ -90,6 +90,8 @@ email_qry <- "SELECT
 # send query 
 dlr_emails <- dbGetQuery(jdbConnection, email_qry)
 
+# remove dupes 
+dlr_emails <- dlr_emails[!duplicated(dlr_emails), ]
 
 # save data to data folder 
 saveRDS(dlr_emails, here("data", paste0("dealer_email_list_", Sys.Date(), ".rds")))
@@ -120,7 +122,7 @@ sero <- read.csv("https://noaa-sero.s3.amazonaws.com/drop-files/pims/FOIA+Vessel
 
 # subset just for HMS permits 
 sero$permit_type <- str_split_fixed(sero$Permit, pattern = "-", n = 2)[,1]
-sero_hms_permits <- c('SFD','SFH','SFI','SKD','SKI','ATL','CCSB','SHS')
+sero_hms_permits <- c('SFD','SFH','SFI','CCSB')
 
 sero <- subset(sero, permit_type %in% sero_hms_permits)
 

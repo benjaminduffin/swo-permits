@@ -1,0 +1,78 @@
+---
+title: "swoDlr_email_template"
+author: "Ben Duffin"
+format: html
+editor: visual
+theme: yeti
+params:
+  dlr: '144661'
+---
+
+### Template letter
+
+
+
+```{r libraries}
+#| warning: false
+#| message: false
+#| echo: false
+library(flextable)
+library(knitr) 
+library(here)
+library(dplyr)
+```
+
+
+```{r datprep}
+#| echo: false
+#| warning: false
+#| message: false
+
+# read data
+#datdat <- readRDS(here("output", "swo_vesPermit_nomatch_2022-08-24.rds"))
+datdat <- readRDS("C:/Users/benjamin.duffin/Documents/R Projects/swo-permits/output/swo_vesPermit_nomatch_2022-08-24.rds")
+# # set up table and dealer name
+subdat <- datdat[datdat$Dealer.Id == i, ]
+
+# unique dealer name and emails
+dealer <- unique(subdat$DEALER_NAME)
+email <- unique(subdat$EMAILS)
+
+# generate data for flextable 
+subdat <- subdat %>%
+  select(DEALER_NAME, Vessel.Id, SAFIS.Dealer.Report.Id, Dealer.Ticket.Number, 
+         Date.Landed, Federal.File.Name, Common.Name, Weight..lbs.)
+
+names(subdat) <- c("Dealer", "Vessel_ID", "SAFIS_Report_No", "Ticket_No", "Date_Landed", 
+                   "Fed Filename", "Common_Name", "Reported_Qty")
+
+
+
+```
+
+
+
+Dealer Emails: `r email`
+
+
+Dear `r dealer`,
+
+I work with the Atlantic Highly Migratory Species (HMS) Division, and I'm emailing you about potential errors in the vessel ID reported for federal dealer reports or trip tickets.
+
+We received a report indicating a vessel state registration/USCG number which we were not able to match with a vessel permit. Can you please confirm the state registration or USCG number (Vessel ID field) for the record detailed in the table below?
+
+```{r, list, echo = F, ft.align = "left"}
+
+myft <- flextable(subdat)
+myft <- autofit(myft)
+myft
+```
+
+
+If the information in the Vessel ID field is correct, please confirm by replying to this email. If the Vessel ID is incorrect, can you please update and resend your dealer report/trip ticket and let me know you've submitted a correction?
+
+If you are unable to update these records, or have any questions, please don't hesitate to contact me at 727-314-1265.
+
+Sincerely 
+
+Ben
