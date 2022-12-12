@@ -9,6 +9,15 @@
 # need to also pull in eDealer emails then 
 # 4- filling table with notes/updates ({googledrive} package)
 
+
+###############
+# Notes
+# pad dealer ticket numbers
+# reduce to one row/trip ticket
+# add in dealer name to file?
+
+
+
 # Load libraries ----------------------------------------------------------
 
 library(writexl)
@@ -119,7 +128,7 @@ swo_s <- swo %>%
   
 
 
-# Matching ----------------------------------------------------------------
+# Matching ----------------------------------------------------------------   REMOVE STUFF THAT HAS BEEN WORKED ON PREVIOUSLY
 
 # take a look at what is present in the data 
 table(swo_s$Vessel.Id %in% garfo_s$VESSEL_ID)

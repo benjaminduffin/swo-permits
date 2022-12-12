@@ -24,7 +24,7 @@ library(rmarkdown)
 
 # Read data ---------------------------------------------------------------
 
-swo_nomatch_s <- readRDS(here("output", "swo_vesPermit_nomatch_2022-09-02.rds")) # pick most recent
+swo_nomatch_s <- readRDS(here("output", "swo_vesPermit_nomatch_2022-12-12.rds")) # pick most recent
 
 # convert actual NA to "Unknown" dealer names 
 
@@ -40,6 +40,7 @@ swo_nomatch_s <- readRDS(here("output", "swo_vesPermit_nomatch_2022-09-02.rds"))
 #                 params = list(dlr = i)
 #                 )
 # }
+
 
 # rmarkdown version - .qmd isn't accessing env. variables? 
 for (i in unique(swo_nomatch_s$Dealer.Id)) {

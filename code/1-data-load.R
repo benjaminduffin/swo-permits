@@ -67,10 +67,10 @@ keyring::key_get("HMS-eDealer", "BENJAMINDUFFIN")
 # create driver object 
 # point this to your local ojdbc8.jar file! 
 jdbcDriver <- JDBC(driverClass = "oracle.jdbc.OracleDriver",
-                   classPath="C:/instantclient-basic-windows.x64-21.6.0.0.0dbru/instantclient_21_6/ojdbc8.jar") #CHANGE
+                 classPath="C:/Users/benjamin.duffin/Desktop/sqldeveloper-20.4.1.407.0006-x64/sqldeveloper/jdbc/lib/ojdbc8.jar") # find driver dir 
 
 
-# Create connection to the database 
+# Create connection to the database ----- # add password username request via the Rstudio api
 jdbConnection <- dbConnect(jdbcDriver, 
                            Sys.getenv("HMS_EDEALER"), 
                            user = keyring::key_list("HMS-eDealer")$username, 

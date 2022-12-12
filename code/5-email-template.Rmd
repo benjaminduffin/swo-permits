@@ -26,7 +26,7 @@ library(dplyr)
 
 # read data
 #datdat <- readRDS(here("output", "swo_vesPermit_nomatch_2022-08-24.rds"))
-datdat <- readRDS("C:/Users/benjamin.duffin/Documents/R Projects/swo-permits/output/swo_vesPermit_nomatch_2022-09-02.rds")
+datdat <- readRDS("C:/Users/benjamin.duffin/Documents/R Projects/swo-permits/output/swo_vesPermit_nomatch_2022-12-12.rds")
 # # set up table and dealer name
 subdat <- datdat[datdat$Dealer.Id == i, ]
 
